@@ -94,7 +94,10 @@
       "custom_css": [
         ".border-bottom {border-color: #ebebeb;}",
         ".header {box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);}",
-        ".h-count {color: #ffffff;}"
+        ".h-count {color: #000000;}",
+        ".header-search__mega .search__input {background-color: #f2f2f2; color: #333333;}",
+        ".header-search__mega .search__button {color: #333333;}",
+        ".header-search__mega .search__input::placeholder {color: #666666;}"
       ],
       "settings": {
         "section_width": "fluid_container",
