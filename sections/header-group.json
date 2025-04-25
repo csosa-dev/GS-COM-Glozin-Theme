@@ -92,7 +92,9 @@
         "menu_promotion_VK7kpq"
       ],
       "custom_css": [
-        ".border-bottom {border-color: #ebebeb;}"
+        ".border-bottom {border-color: #ebebeb;}",
+        ".header {box-shadow: 0 4px 13px rgba(0, 0, 0, 0.15);}",
+        ".h-count {color: #ffffff;}"
       ],
       "settings": {
         "section_width": "fluid_container",
