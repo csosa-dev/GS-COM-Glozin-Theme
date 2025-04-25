@@ -11,46 +11,6 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "top_bar_CbXNYj": {
-      "type": "top-bar",
-      "blocks": {
-        "text_slider_LFaC38": {
-          "type": "text_slider",
-          "settings": {
-            "text1": "Sign up for 10% off your first order. <a href=\"/account/\" title=\"/account/\"><strong>Sign Up</strong></a>",
-            "text2": "Summer sale discount off 50%. <a href=\"/collections/activewear\" title=\"Activewear\"><strong>Shop Sale</strong></a>",
-            "text3": "Coats—every friday 75% Off . <a href=\"/collections/blazers\" title=\"Blazers\"><strong>Shop Sale</strong></a>",
-            "change_every": 3,
-            "hidden_on_mobile": false
-          }
-        },
-        "cur_lang_aPwfT9": {
-          "type": "cur_lang",
-          "settings": {
-            "menu_link": "",
-            "show_currency": true,
-            "show_language": false,
-            "show_our_store": true,
-            "hidden_on_mobile": true
-          }
-        }
-      },
-      "block_order": [
-        "text_slider_LFaC38",
-        "cur_lang_aPwfT9"
-      ],
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "scheme-4faf0e4d-27f4-4d02-bc51-617383bab1a9",
-        "show_mobile": true,
-        "show_separator_line": true,
-        "uppercase": false,
-        "font_size": 13,
-        "font_weight": "body_weight",
-        "padding_top": 9,
-        "padding_bottom": 9
-      }
-    },
     "header_mega_store_GNYFcp": {
       "type": "header-mega-store",
       "blocks": {
@@ -137,10 +97,10 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "scheme-4faf0e4d-27f4-4d02-bc51-617383bab1a9",
-        "show_email": true,
-        "show_phone": true,
-        "enable_login_popup": true,
-        "separator_line": "inner_page",
+        "show_email": false,
+        "show_phone": false,
+        "enable_login_popup": false,
+        "separator_line": "all-page",
         "sticky_header_type": "none",
         "sticky_header_mobile": true,
         "mega_menu": "main-menu",
@@ -162,12 +122,12 @@
         "menu_mobile_color": "#ffffff",
         "menu_mobile_background": "#d0473e",
         "show_search": true,
-        "show_account_icon": true,
+        "show_account_icon": false,
         "show_wishlist_icon": true,
         "show_shopping_cart": true,
         "show_currency": true,
         "show_language": true,
-        "show_recently_viewed": true,
+        "show_recently_viewed": false,
         "padding_top": 25,
         "padding_bottom": 25
       }
@@ -270,7 +230,6 @@
     }
   },
   "order": [
-    "top_bar_CbXNYj",
     "header_mega_store_GNYFcp",
     "header_vertical_ck9ccU"
   ]
