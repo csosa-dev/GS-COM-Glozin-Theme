@@ -293,6 +293,10 @@
       "action_yes": "Yes",
       "action_no": "No"
     },
+    "whatsapp":{
+      "whatsapp": "WhatsApp",
+      "message_us": "WhatsApp us"
+    },
     "compare": {
       "no_product": "Your compare is empty",
       "empty_des": "No products were added to the compare page.",
