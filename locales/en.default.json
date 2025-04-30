@@ -10,6 +10,10 @@
     "close": "Close",
     "complementary_products": "Complementary products"
   },
+  "store_selector": {
+    "choose_store_1": "Choose  ",
+    "choose_store_2": "your store"
+  },
   "page_sale": {
     "use_code": "Use code:"
   },

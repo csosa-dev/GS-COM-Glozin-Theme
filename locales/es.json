@@ -10,6 +10,10 @@
       "close": "Cerca",
       "complementary_products": "Productos complementarios"
     },
+    "store_selector": {
+      "choose_store_1": "Elige tu ",
+      "choose_store_2": "tienda"
+    },
     "page_sale": {
       "use_code": "Código de uso:"
     },
