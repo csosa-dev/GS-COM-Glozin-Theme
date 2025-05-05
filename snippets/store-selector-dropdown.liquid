@@ -1,60 +1,61 @@
-{% comment %} <div
-  class="submenu submenu-horizontal invisible-1025 absolute left-0 gradient p-0 py-1025-40 overflow-x-hidden">
-  <div class="menu-list px-30">
-    <span>it workdfs sdf sdfs d sdfs df sdf sdfsd fsdf sd fs</span>
-  </div>
-</div> {% endcomment %}
-
 <div class="submenu submenu-horizontal invisible-1025 absolute gradient color-default">
   <ul class="subchildmenu list-unstyled px-30 px-1025-0">
-
-    <li class="menu-link level-1 " style="background-color:red">
-      <menu-item 
-      class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0"
-      style="background-color:blue"
-      >
-        <a class="menu_item-link  no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
-          >
-          <span class="reversed-links transition">Belize City</span>
-        </a>
-        <span>8 Baymen Avenue</span>
-        <span>Ones until 5:30</span>
+    {% assign stores = shop.metafields.store %}
+    {% for store in stores %}
+      <li class="menu-link level-1">
+        <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0">
+          <a class="menu_item-link no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
+             href="#" 
+             data-store-id="{{ store[0] }}" 
+             data-store-select>
+            <span class="reversed-links transition">{{ store[1].name }}</span>
+          </a>
+          <span class="store-address">{{ store[1].address }}</span>
+          <span class="store-hours">{{ store[1].weekday_hours }}</span>
         </menu-item>
-    </li>
-
-    <li class="menu-link level-1 " style="background-color:red">
-      <menu-item class="">
-          <span>Belmopan Store</span>
-          <span>City Garden Plaza</span>
-          <span>Ones until 5:30</span>
-        </menu-item>
-    </li>
-
-    <li class="menu-link level-1 ">
-      <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0">
-        <a class="menu_item-link   no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
-          href="#">
-          <span class="reversed-links transition">Orange Walk</span>
-        </a></menu-item>
-
-    </li>
-
-    <li class="menu-link level-1 ">
-      <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0">
-        <a class="menu_item-link   no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
-          href="#">
-          <span class="reversed-links transition">San Ignacio</span>
-        </a></menu-item>
-
-    </li>
-
-    <li class="menu-link level-1 ">
-      <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0">
-        <a class="menu_item-link   no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
-          href="">
-          <span class="reversed-links transition">San Pedro</span>
-        </a></menu-item>
-    </li>
-
+      </li>
+    {% endfor %}
   </ul>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const storeSelectors = document.querySelectorAll('[data-store-select]');
+    
+    storeSelectors.forEach(selector => {
+      selector.addEventListener('click', function(e) {
+        e.preventDefault();
+        const storeId = this.getAttribute('data-store-id');
+        const storeName = this.querySelector('span').textContent;
+        
+        // Save selected store to localStorage
+        localStorage.setItem('selectedStoreId', storeId);
+        localStorage.setItem('selectedStoreName', storeName);
+        
+        // Update the header display
+        const storeDisplay = document.querySelector('#store-selector-bubble .w-store-selector');
+        if (storeDisplay) {
+          storeDisplay.textContent = storeName;
+        }
+        
+        // Close dropdown (optional)
+        const dropdown = this.closest('.submenu');
+        if (dropdown) {
+          dropdown.classList.add('hidden');
+          setTimeout(() => dropdown.classList.remove('hidden'), 10);
+        }
+      });
+    });
+    
+    // Initialize with previously selected store if available
+    const savedStoreId = localStorage.getItem('selectedStoreId');
+    const savedStoreName = localStorage.getItem('selectedStoreName');
+    
+    if (savedStoreName) {
+      const storeDisplay = document.querySelector('#store-selector-bubble .w-store-selector');
+      if (storeDisplay) {
+        storeDisplay.textContent = savedStoreName;
+      }
+    }
+  });
+</script>
