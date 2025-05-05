@@ -43,6 +43,9 @@
               <div class="inline-flex align-center col-logo">
                 {%- render 'logo' -%}
               </div>
+              {%- liquid
+              render 'store-selector-header'
+              -%}
               <div class="header-search header-search__mega color-default flex-1">
                 {%- liquid
                   if top_search
@@ -72,7 +75,7 @@
                   if my_account
                     render 'my-account' | type : 'header_mega'
                   endif
-                  render 'store-selector-header'
+                  
                   render 'whatsapp-header'
                   if wishlist
                     render 'wishlist'
