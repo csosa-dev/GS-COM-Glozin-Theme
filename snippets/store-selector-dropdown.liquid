@@ -1,19 +1,42 @@
-<div class="submenu submenu-horizontal invisible-1025 absolute gradient color-default">
+<div class="submenu submenu-horizontal invisible-1025 absolute gradient color-default store-selector-dropdown">
   <ul class="subchildmenu list-unstyled px-30 px-1025-0">
     {% assign store_entries = shop.metaobjects.store.values %}
     {% for store in store_entries %}
-      <li class="menu-link level-1">
-        <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0">
-          <a class="menu_item-link no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
-             href="#" 
-             data-store-id="{{ store.id }}" 
-             data-store-select>
-            <span class="reversed-links transition">{{ store.name }}</span>
-          </a>
-          <span class="store-address">{{ store.address }}</span>
-          <span class="store-hours">{{ store.weekday_hours }}</span>
-        </menu-item>
-      </li>
+    {% assign is_selected = false %}
+    {% if store.id == selected_store_id %}
+    {% assign is_selected = true %}
+    {% endif %}
+
+
+    <li class="menu-link level-1 store-selector-item">
+      <menu-item>
+        <a class="no-underline" href="#" data-store-id="{{ store.id }}" data-store-select
+          aria-label="Select {{ store.name }} store" {% if is_selected %}aria-current="true" {% endif %}>
+
+            {% comment %} Store name {% endcomment %}
+          <div>
+            <span class="store-selector-name">{{ store.name }}</span>
+          </div>
+
+          {% comment %} address {% endcomment %}
+          <div class="store-selector-address">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18" fill="currentColor">
+              <path d="M8.99995 17.67C8.82734 17.6709 8.65626 17.6375 8.49663 17.5719C8.33699 17.5062 8.19197 17.4096 8.06995 17.2875L0.74995 9.92997C0.504464 9.6827 0.366699 9.3484 0.366699 8.99997C0.366699 8.65154 0.504464 8.31724 0.74995 8.06997L8.06995 0.749969C8.32087 0.511507 8.6538 0.37854 8.99995 0.37854C9.34611 0.37854 9.67903 0.511507 9.92995 0.749969L17.2875 8.10747C17.5329 8.35474 17.6707 8.68904 17.6707 9.03747C17.6707 9.3859 17.5329 9.7202 17.2875 9.96747L9.92995 17.325C9.67744 17.5579 9.34328 17.6819 8.99995 17.67ZM1.90495 8.99997L8.99995 16.095L16.0949 8.99997L8.99995 1.90497L1.90495 8.99997ZM12.3449 7.90497L10.0949 5.65497L8.99995 6.74997L9.97495 7.71747H7.87495C7.22909 7.71945 6.61026 7.97689 6.15356 8.43358C5.69687 8.89028 5.43943 9.50911 5.43745 10.155V11.1825H6.93745V10.125C6.93745 9.87633 7.03622 9.63787 7.21204 9.46206C7.38786 9.28624 7.62631 9.18747 7.87495 9.18747H10.0049L8.99995 10.155L10.0949 11.25L12.3449 8.99997C12.4199 8.92981 12.4796 8.84502 12.5205 8.75085C12.5613 8.65667 12.5824 8.55512 12.5824 8.45247C12.5824 8.34982 12.5613 8.24827 12.5205 8.15409C12.4796 8.05992 12.4199 7.97512 12.3449 7.90497z" />
+            </svg>
+            <span>{{ store.address }}</span>
+          </div>
+
+          {% comment %} phone {% endcomment %}
+          <div class="store-selector-phone">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18" fill="currentColor">
+              <path d="M12.3751 15.9375C9.64122 15.9335 7.0205 14.8458 5.0874 12.9127C3.15429 10.9795 2.06652 8.35883 2.06255 5.625C2.05759 4.61703 2.42054 3.64188 3.08332 2.88245C3.7461 2.12301 4.66318 1.63146 5.66255 1.5C5.94139 1.46242 6.22494 1.51492 6.47184 1.64983C6.71875 1.78475 6.91608 1.99503 7.03505 2.25L8.44505 5.55C8.53042 5.74776 8.56551 5.96358 8.54718 6.1782C8.52886 6.39282 8.4577 6.59957 8.34005 6.78L7.23005 8.4825C7.72679 9.44898 8.51357 10.2358 9.48005 10.7325L11.1525 9.615C11.3343 9.4942 11.5434 9.42065 11.7608 9.40101C11.9782 9.38137 12.197 9.41625 12.3975 9.5025L15.6901 10.9125C15.9645 11.0237 16.1936 11.2239 16.3405 11.481C16.4874 11.7381 16.5436 12.0371 16.5001 12.33C16.3718 13.3314 15.8814 14.2512 15.1215 14.9158C14.3615 15.5804 13.3846 15.9438 12.3751 15.9375ZM5.71505 3.045C5.11185 3.15686 4.56666 3.47587 4.17365 3.94693C3.78064 4.41799 3.5645 5.01153 3.56255 5.625C3.56454 7.96161 4.49364 10.202 6.14587 11.8542C7.79811 13.5064 10.0384 14.4355 12.3751 14.4375C12.9885 14.4355 13.5821 14.2194 14.0531 13.8264C14.5242 13.4334 14.8432 12.8882 14.9551 12.285L11.8876 10.9725L10.215 12.09C10.0265 12.2156 9.80875 12.2905 9.58282 12.3076C9.35689 12.3247 9.13036 12.2833 8.92505 12.1875C7.57931 11.5319 6.48969 10.4475 5.82755 9.105C5.72948 8.90228 5.68553 8.67763 5.69999 8.45289C5.71444 8.22816 5.78681 8.01099 5.91005 7.8225L7.02755 6.12L5.71505 3.045Z" />
+            </svg>
+            <span>{{ store.phone }}</span>
+          </div>
+        </a>
+
+      </menu-item>
+    </li>
     {% endfor %}
   </ul>
 </div>
